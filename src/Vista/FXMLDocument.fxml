@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.FXMLDocumentController">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="Archivo">
+            <items>
+                  <MenuItem mnemonicParsing="false" onAction="#leerTxt" text="Cargar datos" />
+                  <Menu mnemonicParsing="false" text="Copias de seguridad">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#crearCopiaSeg" text="Crear copia de seguridad" />
+                        <MenuItem mnemonicParsing="false" onAction="#leerCopiaSeg" text="Recuperar copia de seguridad" />
+                    </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="XML">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#crearXML" text="Crear archivos XML" />
+                        <MenuItem mnemonicParsing="false" onAction="#leerXML" text="Recuperar datos desde XML" />
+                    </items>
+                  </Menu>
+              <MenuItem mnemonicParsing="false" onAction="#cerrarPrograma" text="Salir" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Gestión">
+            <items>
+                  <Menu mnemonicParsing="false" text="Clientes">
+                    <items>
+                      <MenuItem mnemonicParsing="false" onAction="#anadirCliente" text="Añadir cliente" />
+                        <MenuItem mnemonicParsing="false" onAction="#borrarCliente" text="Borrar cliente" />
+                        <MenuItem mnemonicParsing="false" onAction="#listarClientes" text="Listar clientes" />
+                    </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Vehículos">
+                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#anadirVehiculo" text="Añadir vehículo" />
+                        <MenuItem mnemonicParsing="false" onAction="#borrarVehiculo" text="Borrar vehículo" />
+                        <MenuItem mnemonicParsing="false" onAction="#listarVehiculos" text="Listar vehículos" />
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Alquileres">
+                    <items>
+                      <MenuItem mnemonicParsing="false" onAction="#anadirAlquiler" text="Nuevo alquiler" />
+                        <MenuItem mnemonicParsing="false" onAction="#ceerrarAlquiler" text="Cerrar alquiler" />
+                        <MenuItem mnemonicParsing="false" onAction="#listarAlquileres" text="Listar alquileres" />
+                    </items>
+                  </Menu>
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Ayuda">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#mostrarAcercaDe" text="Acerca de" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+</BorderPane>
