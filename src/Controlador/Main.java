@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Modelo;
+package Controlador;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -25,10 +25,20 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import static Controlador.ES.*;
 import static Controlador.Utilidades.*;
+import Modelo.Alquiler;
 import static Modelo.Cliente.*;
 import static Modelo.Enumerados.*;
 import static Modelo.Mercancias.*;
 import static Modelo.Alquiler.*;
+import Modelo.AlquilerVehiculos;
+import Modelo.Cliente;
+import Modelo.Deportivo;
+import Modelo.Enumerados;
+import Modelo.Familiar;
+import Modelo.Furgoneta;
+import Modelo.Mercancias;
+import Modelo.Turismo;
+import Modelo.Vehiculo;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.w3c.dom.DOMImplementation;
@@ -39,133 +49,14 @@ import org.w3c.dom.NodeList;
 import org.w3c.dom.Text;
 
 /**
- * @author juan
+ *
+ * @author juans
  */
-public class AlquilerVehiculos {
+public class Main {
 
-    //guardar datos al salir cuando haya cambios que guardar
-    private static ArrayList<Vehiculo> vehiculos = new ArrayList<>();
-    private static ArrayList<Cliente> clientes = new ArrayList<>();
-    private static ArrayList<Alquiler> alquileres = new ArrayList<>();
-
-    //
-    //
-//
-    //---------------------------------------MAIN------------------------------------------------------//  
-    public static void main(String[] args) throws FileNotFoundException {
-
-        //Cargamos los datos desde los archivos.
-        leerDatos("");
-        //guardar datos al salir cuando haya cambios que guardar
-        boolean guardarDatos = false;
-        int opcion = 0;
-        Scanner sc = new Scanner(System.in);
-        escribirLn("-------------------------------------------------------");
-        escribirLn("Bienvenido al programa de gestión de Alquileres Xuanin.");
-        escribirLn("-------------------------------------------------------");
-        escribirLn("Información al usuario:\n- Una vez elegida una opción del menu, en el caso de haber escogido erroneamente,\n"
-                + "  podrás volver al menu dando un dato con formato erroneo en el primer paso de la opción.\n"
-                + "- Si va a introducir un alquiler, se recomienda listar previamente con las opciones 3,6 y 9\n"
-                + "  los clientes, vehículos y alquileres ya guardados para poder consultar datos.\n"
-                + "- Cuando listemos los alquileres, el dato 'Disponible' nos indicará: si es Si que\n"
-                + "  se trata de un alquiler cerrado; si es No que es un alquiler activo.");
-
-        do {
-
-            escribirLn("Opciones: ");
-            escribirLn("1. Añadir cliente.\n2. Borrar cliente.\n3. Listar clientes.\n"
-                    + "4. Añadir vehiculo.\n5. Borrar vehiculo.\n6. Listar vehiculos.\n"
-                    + "7. Nuevo alquiler.\n8. Cerrar alquiler.\n9. Listar alquileres.\n"
-                    + "10. Guardar datos.\n11. Crear copia de seguridad.\n12. Cargar copia de seguridad.\n"
-                    + "13. Guardar info en XML.\n14. Leer info de XML.\n15. Salir");
-
-            opcion = leerEntero("\nIntroduce opción: ");
-
-            switch (opcion) {
-                case 1:
-                    anadirCliente();
-                    guardarDatos = true;
-                    break;
-                case 2:
-                    borrarCliente();
-                    guardarDatos = true;
-                    break;
-                case 3:
-                    listarClientes();
-                    break;
-                case 4:
-                    anadirVehiculo();
-                    guardarDatos = true;
-                    break;
-                case 5:
-                    borrarVehiculo();
-                    guardarDatos = true;
-                    break;
-                case 6:
-                    listarVehiculos();
-                    break;
-                case 7:
-                    nuevoAlquiler();
-                    guardarDatos = true;
-                    break;
-                case 8:
-                    cerrarAlquiler();
-                    guardarDatos = true;
-                    break;
-                case 9:
-                    listarAlquileres();
-                    break;
-                case 10:
-                    guardarDatos("");
-                    //Al pasarle por parámetro un String vacío, los datos se guardaran en el directorio raíz del proyecto
-                    guardarDatos = false;
-                    break;
-                case 11:
-                    crearCopiaSeg();
-                    break;
-                case 12:
-                    vaciarArrays();
-                    cargarCopiaSeg();
-                    guardarDatos = true;
-                    break;
-                case 13:
-                    guardarDatosXML();
-                    break;
-                case 14:
-                    vaciarArrays();
-                    leerDatosXML();
-                    guardarDatos = true;
-                    break;
-                case 15:
-                    //guardar datos cuando haya cambios que guardar
-                    if (guardarDatos) {
-                        confirmarGuardarDatos();
-                    }
-
-                    //Vaciamos los arrays
-                    vaciarArrays();
-
-                    escribirLn("\n               Fin de programa");
-                    escribirLn("------------------------------------------------\n");
-                    escribirLn("------------------------------------------------\n");
-                    break;
-                default:
-                    escribirLn("********************ATENCION********************");
-                    escribirLn("              Opción incorrecta.");
-                    escribirLn("          Elija una opción del menu.");
-                    escribirLn("------------------------------------------------");
-                    break;
-            }
-
-        } while (opcion != 15);
-
-    }
-//    
-//
-//---------------------------------------METODOS OPCIONES MENU-------------------------------------//
-//
-//
-//    
+    public static ArrayList<Vehiculo> vehiculos = new ArrayList<>();
+    public static ArrayList<Cliente> clientes = new ArrayList<>();
+    public static ArrayList<Alquiler> alquileres = new ArrayList<>();
 
     public static void anadirCliente() {
 
@@ -192,7 +83,7 @@ public class AlquilerVehiculos {
                 if (comprobarCodigoPostal(cod_postal)) {
                     value = true;
                     boolean alta = true;
-                    Cliente c = new Cliente(dni, nombre, direccion, localidad, cod_postal, alta);
+                    Cliente c = new Cliente(dni, nombre, direccion, localidad, cod_postal, true);
 
                     clientes.add(c);
                     escribirLn(c.toString());
@@ -234,6 +125,7 @@ public class AlquilerVehiculos {
 
                     } else {
                         cliente.setAltaCliente(false);
+                        cliente.toString();
                         escribirLn("\n        Cliente eliminado correctamente.");
                         escribirLn("------------------------------------------------\n");
 
@@ -242,7 +134,7 @@ public class AlquilerVehiculos {
             }
 
             if (!procesado) {
-                cliente.setAltaCliente(false);
+                clientes.remove(cliente);
                 escribirLn("\n       Cliente borrado correctamente.");
                 escribirLn("------------------------------------------------\n");
             }
@@ -279,6 +171,7 @@ public class AlquilerVehiculos {
                 String marca = (leerCadena("\nIntroduce marca del vehículo: ")).toUpperCase();
                 String modelo = (leerCadena("\nIntroduce modelo del vehículo: ")).toUpperCase();
                 int cilindrada = leerEntero("\nIntroduce cilindrada del vehículo: ");
+                boolean alta = true;
                 int seleccion = leerEntero(1, 3, "\nSelecciona tipo de vehículo.\n1.Furgoneta.\n2.Familiar.\n3.Deportivo");
 
                 if (seleccion == 1) {
@@ -290,8 +183,6 @@ public class AlquilerVehiculos {
                     int posicion = leerEntero(1, 3, "\nSelecciona un tamaño:\n1.Grande\n2.Mediano\n3.Pequeño");
 
                     Tamanio tamanio = Tamanio.values()[posicion - 1];
-
-                    boolean alta = true;
 
                     Furgoneta furgoneta = new Furgoneta(matricula, marca, modelo, cilindrada, alta, pma, volumen, refrigerado, tamanio);
 
@@ -313,8 +204,6 @@ public class AlquilerVehiculos {
                     int numPlazas = leerEntero(4, 7, "\nElija el número de plazas entre 4 y 7.");
 
                     boolean sillaBebe = leerBoolean("\n¿Tiene silla de bebe? S/N");
-
-                    boolean alta = true;
 
                     Familiar familiar = new Familiar(matricula, marca, modelo, cilindrada, alta, numPuertas, combustible, numPlazas, sillaBebe);
 
@@ -338,8 +227,6 @@ public class AlquilerVehiculos {
                     int opcion = leerEntero(1, 2, "\nSelecciona tipo de caja de cambios: \n1.Automático.\n2.Manual.");
 
                     CajaCambios cambio = CajaCambios.values()[opcion - 1];
-
-                    boolean alta = true;
 
                     Deportivo deportivo = new Deportivo(matricula, marca, modelo, cilindrada, alta, numPuertas, combustible, cambio, descapotable);
 
@@ -388,7 +275,7 @@ public class AlquilerVehiculos {
                                     + "        primero el alquiler asociado.");
                             escribirLn("------------------------------------------------\n");
                         } else {
-                            vehiculo.setAltaVehiculo(false);
+                            vehiculos.remove(vehiculo);
                             escribirLn("\n        Vehiculo eliminado correctamente.");
                             escribirLn("------------------------------------------------\n");
                         }
@@ -396,7 +283,7 @@ public class AlquilerVehiculos {
                 }
 
                 if (!procesado) {
-                    vehiculo.setAltaVehiculo(false);
+                    vehiculos.remove(vehiculo);
                     escribirLn("\n        Vehiculo eliminado correctamente.");
                     escribirLn("------------------------------------------------\n");
                 }
@@ -967,7 +854,7 @@ public class AlquilerVehiculos {
         }
     }
 
-    private static void borrarFicherosDeDirectorio(File directorio) {
+    public static void borrarFicherosDeDirectorio(File directorio) {
         //Con este método borramos todos los ficheros contenidos en el directorio
 
         File[] ficheros = directorio.listFiles();
@@ -977,7 +864,7 @@ public class AlquilerVehiculos {
         }
     }
 
-    private static void guardarDatosXML() {
+    public static void guardarDatosXML() {
         guardarDatosXMLClientes();
         guardarDatosXMLVehiculos();
         guardarDatosXMLAlquileres();
@@ -1043,10 +930,9 @@ public class AlquilerVehiculos {
                 cliente_.appendChild(elemento);
 
                 //Insertamos el alta
-                elemento = documento.createElement("alta");
-                textoElemento = documento.createTextNode(String.valueOf(clientes.get(i).getAltaCliente()));
-                elemento.appendChild(textoElemento);
-                cliente_.appendChild(elemento);
+                Element alta = documento.createElement("alta");
+                Text textoAlta = documento.createTextNode(String.valueOf(clientes.get(i).getAltaCliente()));
+                alta.appendChild(textoAlta);
 
                 //Añadimos al elemento Clientes el elemento Cliente
                 //clientes_XML.appendChild(cliente_);
@@ -1122,11 +1008,6 @@ public class AlquilerVehiculos {
                 Text textoCilindrada = documento.createTextNode(String.valueOf(vehiculos.get(i).getCilindrada()));
                 cilindrada.appendChild(textoCilindrada);
 
-                //Insertamos el alta
-                Element alta = documento.createElement("alta");
-                Text textoAlta = documento.createTextNode(String.valueOf(vehiculos.get(i).getAltaVehiculo()));
-                alta.appendChild(textoAlta);
-
                 if (vehiculos.get(i) instanceof Turismo) {
 
                     Turismo aux = (Turismo) vehiculos.get(i);
@@ -1165,7 +1046,6 @@ public class AlquilerVehiculos {
                         vehiculo_.appendChild(marca);
                         vehiculo_.appendChild(modelo);
                         vehiculo_.appendChild(cilindrada);
-                        vehiculo_.appendChild(alta);
                         vehiculo_.appendChild(num_puertas);
                         vehiculo_.appendChild(combustible);
                         vehiculo_.appendChild(cambio);
@@ -1195,7 +1075,6 @@ public class AlquilerVehiculos {
                         vehiculo_.appendChild(marca);
                         vehiculo_.appendChild(modelo);
                         vehiculo_.appendChild(cilindrada);
-                        vehiculo_.appendChild(alta);
                         vehiculo_.appendChild(num_puertas);
                         vehiculo_.appendChild(combustible);
                         vehiculo_.appendChild(num_plazas);
@@ -1242,7 +1121,6 @@ public class AlquilerVehiculos {
                         vehiculo_.appendChild(marca);
                         vehiculo_.appendChild(modelo);
                         vehiculo_.appendChild(cilindrada);
-                        vehiculo_.appendChild(alta);
                         vehiculo_.appendChild(pma);
                         vehiculo_.appendChild(volumen);
                         vehiculo_.appendChild(refrigerado);
@@ -1353,7 +1231,7 @@ public class AlquilerVehiculos {
 
     }
 
-    private static void leerDatosXML() {
+    public static void leerDatosXML() {
 
         leerDatosXMLClientes();
         leerDatosXMLVehiculos();
@@ -1447,8 +1325,8 @@ public class AlquilerVehiculos {
                     int cilindrada = Integer.parseInt(elemento.getElementsByTagName("cilindrada").item(0).getChildNodes().item(0).getTextContent());
 
                     //Obtenemos el valor de alta
-                    String alta = elemento.getElementsByTagName("alta").item(0).getChildNodes().item(0).getTextContent();
-                    boolean alta_ = (alta.equalsIgnoreCase("TRUE") ? true : false);
+                    String alta_ = elemento.getElementsByTagName("alta").item(0).getChildNodes().item(0).getTextContent();
+                    boolean alta = (alta_.equalsIgnoreCase("TRUE") ? true : false);
 
                     //Obtenemos el valor de tipo
                     String tipo = elemento.getElementsByTagName("tipo").item(0).getChildNodes().item(0).getTextContent();
@@ -1490,7 +1368,7 @@ public class AlquilerVehiculos {
                             String descapotable = elemento.getElementsByTagName("descapotable").item(0).getChildNodes().item(0).getTextContent();
                             boolean desc = (descapotable.equalsIgnoreCase("TRUE") ? true : false);
 
-                            vehiculos.add(new Deportivo(matricula, marca, modelo, cilindrada, alta_, num_puertas, c, cajacambios, desc));
+                            vehiculos.add(new Deportivo(matricula, marca, modelo, cilindrada, alta, num_puertas, c, cajacambios, desc));
 
                             break;
 
@@ -1520,7 +1398,7 @@ public class AlquilerVehiculos {
                             String silla_bebe = elemento.getElementsByTagName("silla_bebe").item(0).getChildNodes().item(0).getTextContent();
                             boolean sillaBebe = (silla_bebe.equalsIgnoreCase("TRUE")) ? true : false;
 
-                            vehiculos.add(new Familiar(matricula, marca, modelo, cilindrada, alta_, num_puertas, c, numPlazas, sillaBebe));
+                            vehiculos.add(new Familiar(matricula, marca, modelo, cilindrada, alta, num_puertas, c, numPlazas, sillaBebe));
 
                             break;
 
@@ -1547,7 +1425,7 @@ public class AlquilerVehiculos {
                                     break;
                             }
 
-                            vehiculos.add(new Furgoneta(matricula, marca, modelo, cilindrada, alta_, pma, volumen, refrigerado_, tamanio_));
+                            vehiculos.add(new Furgoneta(matricula, marca, modelo, cilindrada, alta, pma, volumen, refrigerado_, tamanio_));
 
                             break;
 
@@ -1634,9 +1512,6 @@ public class AlquilerVehiculos {
 //
 //
 //   
-    public AlquilerVehiculos() {
-    }
-
     public static Cliente getCliente(String dni) {
 
         Cliente c = null;
@@ -1727,7 +1602,7 @@ lo devuelva si este existe o null en caso contrario.*/
         return dni;
     }
 
-    private static void vaciarArrays() {
+    public static void vaciarArrays() {
         clientes.clear();
         vehiculos.clear();
         alquileres.clear();

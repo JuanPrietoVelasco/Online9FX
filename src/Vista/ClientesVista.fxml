@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="434.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vista.ClientesVistaController">
+   <children>
+      <TableView fx:id="tableView" layoutX="28.0" layoutY="57.0" prefHeight="315.0" prefWidth="544.0">
+        <columns>
+          <TableColumn fx:id="dniColumna" prefWidth="75.0" text="DNI" />
+          <TableColumn fx:id="nombreColumna" prefWidth="99.0" text="Nombre" />
+            <TableColumn fx:id="direccionColumna" prefWidth="117.0" text="Domicilio" />
+            <TableColumn fx:id="localidadColumna" prefWidth="117.0" text="Municipio" />
+            <TableColumn fx:id="codigopostalColumna" prefWidth="135.0" text="CP" />
+        </columns>
+      </TableView>
+      <Label layoutX="265.0" layoutY="14.0" text="Clientes">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Button layoutX="231.0" layoutY="389.0" mnemonicParsing="false" onAction="#volverAtras" text="Vover a menú principal" />
+   </children>
+</AnchorPane>

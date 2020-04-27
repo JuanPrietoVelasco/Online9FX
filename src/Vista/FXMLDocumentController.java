@@ -3,10 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controlador;
+package Vista;
 
+import static Controlador.Utilidades.*;
 import Modelo.AlquilerVehiculos;
+import Controlador.Main;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
@@ -17,13 +20,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuBar;
 import javafx.stage.Stage;
 
-/**
- *
- * @author juans
- */
+
 public class FXMLDocumentController implements Initializable {
+
+    @FXML
+    MenuBar myMenuBar;
 
     @FXML
     private void cerrarPrograma(ActionEvent event) {
@@ -45,49 +49,66 @@ public class FXMLDocumentController implements Initializable {
         }
     }
 
+    public void mostrarClientes(ActionEvent event) throws IOException {
+        Parent parent = FXMLLoader.load(getClass().getResource("ClientesVista.fxml"));
+        Scene scene = new Scene(parent);
+        Stage stage = (Stage) myMenuBar.getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    }
+    
+    public void mostrarVehiculos(ActionEvent event) throws IOException {
+        Parent parent = FXMLLoader.load(getClass().getResource("VehiculosVista.fxml"));
+        Scene scene = new Scene(parent);
+        Stage stage = (Stage) myMenuBar.getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    }
+
     @FXML
     void leerTxt(ActionEvent event) throws FileNotFoundException {
-        AlquilerVehiculos.leerDatos("");
-        System.out.println("Datos cargados correctamente");
+        Controlador.Main.leerDatos("");
+        //System.out.println("Datos cargados correctamente");
+        informacion("Datos cargados correctamente");
     }
-    
+
     @FXML
-    void crearCopiaSegFX(ActionEvent event) {
+    void crearCopiaSeg(ActionEvent event) {
         AlquilerVehiculos.crearCopiaSeg();
     }
-    
+
     @FXML
     void leerCopiaSeg(ActionEvent event) {
-        AlquilerVehiculos.vaciarArrays();
-        AlquilerVehiculos.cargarCopiaSeg();
+        Controlador.Main.vaciarArrays();
+        Controlador.Main.cargarCopiaSeg();
     }
-    
+
     @FXML
     void crearXML(ActionEvent event) {
-        AlquilerVehiculos.guardarDatosXML();
+        Controlador.Main.guardarDatosXML();
     }
-    
+
     @FXML
     void leerXML(ActionEvent event) {
-        AlquilerVehiculos.vaciarArrays();
-        AlquilerVehiculos.leerDatosXML();
+        Controlador.Main.vaciarArrays();
+        Controlador.Main.leerDatosXML();
     }
-    
+
     @FXML
     void anadirCliente(ActionEvent event) {
         AlquilerVehiculos.anadirCliente();
     }
-    
+
     @FXML
     void borrarCliente(ActionEvent event) {
         AlquilerVehiculos.borrarCliente();
     }
-    
+
     @FXML
     void listarClientes(ActionEvent event) {
         AlquilerVehiculos.listarClientes();
     }
-    
+
     @FXML
     void anadirVehiculo(ActionEvent event) {
         AlquilerVehiculos.anadirVehiculo();
@@ -97,31 +118,30 @@ public class FXMLDocumentController implements Initializable {
     void borrarVehiculo(ActionEvent event) {
         AlquilerVehiculos.borrarVehiculo();
     }
-    
-     @FXML
+
+    @FXML
     void listarVehiculos(ActionEvent event) {
         AlquilerVehiculos.listarVehiculos();
     }
-    
-     @FXML
+
+    @FXML
     void anadirAlquiler(ActionEvent event) {
         AlquilerVehiculos.nuevoAlquiler();
     }
-    
-     @FXML
+
+    @FXML
     void ceerrarAlquiler(ActionEvent event) {
         AlquilerVehiculos.cerrarAlquiler();
     }
-    
-     @FXML
+
+    @FXML
     void listarAlquileres(ActionEvent event) {
         AlquilerVehiculos.listarAlquileres();
     }
-    
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+
     }
 
 }

@@ -16,15 +16,16 @@ public class Cliente implements Comparable<Cliente>{
     private String direccion;
     private String localidad;
     private String codigoPostal;
-    //private boolean altaCliente;
+    private boolean altaCliente;
     
     
-    public Cliente(String dni, String nombre, String direccion, String localidad, String codigo){
+    public Cliente(String dni, String nombre, String direccion, String localidad, String codigo, boolean alta){
         this.dni = dni;
         this.nombre = nombre;
         this.direccion = direccion;
         this.localidad = localidad;
         this.codigoPostal = codigo;
+        this.altaCliente = alta;
     }
     
     public Cliente(Cliente cliente){
@@ -56,13 +57,13 @@ public class Cliente implements Comparable<Cliente>{
         return this.codigoPostal;
     }
     
-   /* public boolean getAltaCliente(){
+    public boolean getAltaCliente(){
         return this.altaCliente;
     }
     
     public void setAltaCliente(boolean alta){
         this.altaCliente = alta; 
-    }*/
+    }
     
     //Corregido
     public String escribirFichero(){

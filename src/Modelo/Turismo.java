@@ -16,8 +16,8 @@ public abstract class Turismo extends Vehiculo {
     protected int numPuertas;
     protected Combustible combustible;
 
-    public Turismo(String matricula, String marca, String modelo, int cilindrada, int numPuertas, Combustible combustible) {
-        super(matricula, marca, modelo, cilindrada);
+    public Turismo(String matricula, String marca, String modelo, int cilindrada, boolean alta, int numPuertas, Combustible combustible) {
+        super(matricula, marca, modelo, cilindrada,alta);
         this.numPuertas = numPuertas;
         this.combustible = combustible;
     }

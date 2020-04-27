@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.VehiculosVistaController">
+   <children>
+      <Separator layoutX="127.0" layoutY="22.0" orientation="VERTICAL" prefHeight="356.0" prefWidth="27.0" />
+      <Label layoutX="49.0" layoutY="38.0" text="Matrículas" />
+      <ListView fx:id="listViewMatriculas" layoutX="14.0" layoutY="68.0" onMouseClicked="#matriculaSeleccionada" prefHeight="307.0" prefWidth="116.0" />
+      <VBox layoutX="154.0" layoutY="38.0" prefHeight="150.0" prefWidth="225.0">
+         <children>
+            <HBox prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+               <children>
+                  <Label alignment="TOP_RIGHT" contentDisplay="TOP" text="Matrícula">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets top="5.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="textFieldMatricula" />
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+               <children>
+                  <Label alignment="TOP_RIGHT" contentDisplay="TOP" text="Marca">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets top="5.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="textFieldMarca" />
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+               <children>
+                  <Label alignment="TOP_RIGHT" contentDisplay="TOP" text="Modelo">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets top="5.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="textFieldModelo" />
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+               <children>
+                  <Label alignment="TOP_RIGHT" contentDisplay="TOP" text="Cilindrada">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets top="5.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="textFieldCilindrada" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

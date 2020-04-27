@@ -15,9 +15,9 @@ public final class Familiar extends Turismo{
     private int numPlazas;
     private boolean sillaBebe;
     
-    public Familiar(String matricula, String marca, String modelo, int cilindrada,
+    public Familiar(String matricula, String marca, String modelo, int cilindrada, boolean alta,
             int numPuertas, Enumerados.Combustible combustible, int numPlazas, boolean sillaBebe) {
-        super(matricula, marca, modelo, cilindrada, numPuertas, combustible);
+        super(matricula, marca, modelo, cilindrada, alta, numPuertas, combustible);
         this.numPlazas=numPlazas;
         this.sillaBebe=sillaBebe;
     }

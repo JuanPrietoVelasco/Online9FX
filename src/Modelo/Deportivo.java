@@ -17,10 +17,10 @@ public final class Deportivo extends Turismo {
     private CajaCambios cambio;
     private boolean descapotable;
 
-    public Deportivo(String matricula, String marca, String modelo, int cilindrada,
+    public Deportivo(String matricula, String marca, String modelo, int cilindrada,  boolean alta,
         int numPuertas, Enumerados.Combustible combustible, CajaCambios cambio,boolean descapotable) {
         
-        super(matricula, marca, modelo, cilindrada, numPuertas, combustible);
+        super(matricula, marca, modelo, cilindrada, alta, numPuertas, combustible);
         this.cambio=cambio;
         this.descapotable=descapotable;
         

@@ -14,14 +14,14 @@ public abstract class Mercancias extends Vehiculo {
     private int pma;
     private int volumen;
 
-    public Mercancias(String matricula, String marca, String modelo, int cilindrada, int pma, int volumen) {
-        super(matricula, marca, modelo, cilindrada);
+    public Mercancias(String matricula, String marca, String modelo, int cilindrada,  boolean alta, int pma, int volumen) {
+        super(matricula, marca, modelo, cilindrada, alta);
         this.pma = pma;
         this.volumen = volumen;
     }
 
     public Mercancias(Vehiculo vehiculo, int pma, int volumen) {
-        super(vehiculo.getMatricula(), vehiculo.getMarca(), vehiculo.getModelo(), vehiculo.getCilindrada()); //Corregido
+        super(vehiculo.getMatricula(), vehiculo.getMarca(), vehiculo.getModelo(), vehiculo.getCilindrada(), vehiculo.getAltaVehiculo()); //Corregido
         this.pma = pma;
         this.volumen = volumen;
     }

@@ -6,9 +6,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.FXMLDocumentController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vista.FXMLDocumentController">
    <top>
-      <MenuBar BorderPane.alignment="CENTER">
+      <MenuBar fx:id="myMenuBar" BorderPane.alignment="CENTER">
         <menus>
           <Menu mnemonicParsing="false" text="Archivo">
             <items>
@@ -34,14 +34,14 @@
                     <items>
                       <MenuItem mnemonicParsing="false" onAction="#anadirCliente" text="Añadir cliente" />
                         <MenuItem mnemonicParsing="false" onAction="#borrarCliente" text="Borrar cliente" />
-                        <MenuItem mnemonicParsing="false" onAction="#listarClientes" text="Listar clientes" />
+                        <MenuItem mnemonicParsing="false" onAction="#mostrarClientes" text="Listar clientes" />
                     </items>
                   </Menu>
                   <Menu mnemonicParsing="false" text="Vehículos">
                      <items>
                         <MenuItem mnemonicParsing="false" onAction="#anadirVehiculo" text="Añadir vehículo" />
                         <MenuItem mnemonicParsing="false" onAction="#borrarVehiculo" text="Borrar vehículo" />
-                        <MenuItem mnemonicParsing="false" onAction="#listarVehiculos" text="Listar vehículos" />
+                        <MenuItem mnemonicParsing="false" onAction="#mostrarVehiculos" text="Listar vehículos" />
                      </items>
                   </Menu>
                   <Menu mnemonicParsing="false" text="Alquileres">

@@ -21,12 +21,13 @@ public abstract class Vehiculo {
     public Vehiculo() {
     }
 
-    public Vehiculo(String matricula, String marca, String modelo, int cilindrada) {
+    public Vehiculo(String matricula, String marca, String modelo, int cilindrada, boolean alta) {
         this.matricula = matricula;
         this.marca = marca;
         this.modelo = modelo;
         this.cilindrada = cilindrada;
         this.disponible = true;
+        this.altaVehiculo = alta;
     }
 
     public Vehiculo(Vehiculo vehiculo) {
@@ -34,6 +35,10 @@ public abstract class Vehiculo {
         this.marca = vehiculo.marca;
         this.modelo = vehiculo.modelo;
         this.cilindrada = vehiculo.cilindrada;
+    }
+
+    public void setDisponible(boolean disponible) {
+        this.disponible = disponible;
     }
 
     public String getMatricula() {
@@ -57,28 +62,26 @@ public abstract class Vehiculo {
         return disponible;
     }
 
-    public void setDisponible(boolean disponible) {
-        this.disponible = disponible;
-    }
-
-    public boolean getAltaVehiculo(){
+    public boolean getAltaVehiculo() {
         return altaVehiculo;
     }
-    
-    public void setAltaVehiculo(boolean alta){
+
+    public void setAltaVehiculo(boolean alta) {
         this.altaVehiculo = alta;
     }
+
     //Corregido
     public String escribirFichero() {
-        return this.matricula + "#" + this.marca + "#" + this.modelo + "#" + this.cilindrada + "#" + this.disponible;
+        return this.matricula + "#" + this.marca + "#" + this.modelo + "#" + this.cilindrada + "#" + this.altaVehiculo + "#" + this.disponible + "\n";
     }
 
     @Override
     public String toString() {
 
         String disponible = (this.disponible) ? "SI" : "NO";
+        String alta = (this.altaVehiculo) ? "SI" : "NO";
 
         return "Matrícula: " + this.matricula + "\t\tMarca: " + this.marca + "\t\tModelo: "
-                + this.modelo + "\t\tCilindrada: " + this.cilindrada + "\t\tDisponible: " + disponible;
+                + this.modelo + "\t\tCilindrada: " + this.cilindrada + "\t\tAlta: " + alta + "\t\tDisponible: " + disponible;
     }
 }

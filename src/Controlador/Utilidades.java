@@ -7,6 +7,7 @@ package Controlador;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -70,5 +71,11 @@ public class Utilidades {
         Matcher m = p.matcher(fecha);
         return m.matches();
     }
+    
+    public static void informacion(String _mensaje){
+        
+      JOptionPane.showMessageDialog( null, _mensaje, "Información",
+                                JOptionPane.INFORMATION_MESSAGE);
+   }
 }
 
