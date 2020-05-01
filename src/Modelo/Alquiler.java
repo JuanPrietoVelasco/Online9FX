@@ -17,6 +17,10 @@ public class Alquiler {
     private int dias;
     private Vehiculo vehiculo;
     private Cliente cliente;
+    private String dni;
+    private String matricula;
+    private String saludo= "HOLA";
+    private String despedida = "ADIOS";
 
     public Alquiler(Cliente cliente, Vehiculo vehiculo) {
         this.cliente = cliente;
@@ -24,7 +28,10 @@ public class Alquiler {
         this.fecha = Calendar.getInstance();
         this.dias = 0;
         vehiculo.setDisponible(false);
+        this.dni = cliente.getDni();
+        this.matricula = vehiculo.getMatricula();
     }
+
     public Calendar getFecha() {
         return fecha;
     }
@@ -40,31 +47,27 @@ public class Alquiler {
     public Cliente getCliente() {
         return cliente;
     }
-    
-    public void setFecha(Calendar fecha){
+
+    public void setFecha(Calendar fecha) {
         this.fecha = fecha;
     }
-    
-    public void setDias(int dias){
+
+    public void setDias(int dias) {
         this.dias = dias;
     }
-    
 
-    
-    public void cerrar(ArrayList <Vehiculo> vehiculos) {
-        
+    public void cerrar(ArrayList<Vehiculo> vehiculos) {
+
         /*Crea un método cerrar que cerrará el alquiler, para lo que, partiendo de la
     fecha actual y la fecha en que se realizó el alquiler, calcule el número de
     días (si se devuelve el mismo día contará como 1 día), y ponga el turismo como disponible.*/
-        
         this.dias = diferenciaDias(Calendar.getInstance());
 
         for (int i = 0; i < vehiculos.size(); i++) {
-            
-                if (vehiculos.get(i).equals(this.vehiculo)) {
-                    vehiculos.get(i).setDisponible(true);
-                }
-            
+
+            if (vehiculos.get(i).equals(this.vehiculo)) {
+                vehiculos.get(i).setDisponible(true);
+            }
 
         }
         this.vehiculo.setDisponible(true);
@@ -75,7 +78,6 @@ public class Alquiler {
         return this.dias * this.PRECIO_DIA;
     }
 
-   
     public int diferenciaDias(Calendar fechaFin) {
 
         long tiempo1, tiempo2, diferencia_dias;
@@ -95,7 +97,7 @@ public class Alquiler {
 
     }
 
-     @Override
+    @Override
     public String toString() {
         return "\nCliente: " + cliente.toString() + "\n" + "Vehículo: \n" + vehiculo.toString() + "\nInicio Alquiler: " + formatoFecha.format(fecha.getTime());
     }

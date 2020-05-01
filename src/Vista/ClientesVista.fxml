@@ -7,22 +7,22 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="434.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vista.ClientesVistaController">
+<AnchorPane id="AnchorPane" prefHeight="441.0" prefWidth="728.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vista.ClientesVistaController">
    <children>
-      <TableView fx:id="tableView" layoutX="28.0" layoutY="57.0" prefHeight="315.0" prefWidth="544.0">
+      <TableView fx:id="tableView" layoutX="28.0" layoutY="57.0" prefHeight="307.0" prefWidth="668.0">
         <columns>
           <TableColumn fx:id="dniColumna" prefWidth="75.0" text="DNI" />
-          <TableColumn fx:id="nombreColumna" prefWidth="99.0" text="Nombre" />
-            <TableColumn fx:id="direccionColumna" prefWidth="117.0" text="Domicilio" />
-            <TableColumn fx:id="localidadColumna" prefWidth="117.0" text="Municipio" />
-            <TableColumn fx:id="codigopostalColumna" prefWidth="135.0" text="CP" />
+          <TableColumn fx:id="nombreColumna" prefWidth="180.0" text="Nombre" />
+            <TableColumn fx:id="direccionColumna" prefWidth="193.0" text="Domicilio" />
+            <TableColumn fx:id="localidadColumna" prefWidth="139.0" text="Municipio" />
+            <TableColumn fx:id="codigopostalColumna" prefWidth="78.0" text="CP" />
         </columns>
       </TableView>
-      <Label layoutX="265.0" layoutY="14.0" text="Clientes">
+      <Label layoutX="328.0" layoutY="14.0" text="Clientes">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Button layoutX="231.0" layoutY="389.0" mnemonicParsing="false" onAction="#volverAtras" text="Vover a menú principal" />
+      <Button fx:id="btnVolver" layoutX="293.0" layoutY="384.0" mnemonicParsing="false" onAction="#volverAtras" text="Vover a menú principal" />
    </children>
 </AnchorPane>

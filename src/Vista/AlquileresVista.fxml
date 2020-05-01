@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vista.AlquileresVistaController">
+   <children>
+      <TableView fx:id="tablaAlquileres" layoutX="25.0" layoutY="45.0" prefHeight="319.0" prefWidth="541.0">
+        <columns>
+          <TableColumn fx:id="colDNI" prefWidth="125.0" text="DNI" />
+          <TableColumn fx:id="ColMat" prefWidth="117.0" text="MATRICULA" />
+            <TableColumn fx:id="ColAct" prefWidth="135.0" text="ACTIVO" />
+            <TableColumn fx:id="ColDias" prefWidth="163.0" text="DÍAS" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

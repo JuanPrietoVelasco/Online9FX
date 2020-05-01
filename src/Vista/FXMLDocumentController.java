@@ -64,11 +64,19 @@ public class FXMLDocumentController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
+    
+    public void mostrarAlquileres(ActionEvent event) throws IOException {
+        Parent parent = FXMLLoader.load(getClass().getResource("AlquileresVista.fxml"));
+        Scene scene = new Scene(parent);
+        Stage stage = (Stage) myMenuBar.getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    }
 
     @FXML
     void leerTxt(ActionEvent event) throws FileNotFoundException {
         Controlador.Main.leerDatos("");
-        //System.out.println("Datos cargados correctamente");
+        System.out.println("Datos cargados correctamente"); //PARA LOG - QUITAR
         informacion("Datos cargados correctamente");
     }
 

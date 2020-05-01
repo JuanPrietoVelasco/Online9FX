@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
@@ -8,66 +9,204 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.VehiculosVistaController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="428.0" prefWidth="778.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.VehiculosVistaController">
    <children>
       <Separator layoutX="127.0" layoutY="22.0" orientation="VERTICAL" prefHeight="356.0" prefWidth="27.0" />
       <Label layoutX="49.0" layoutY="38.0" text="Matrículas" />
-      <ListView fx:id="listViewMatriculas" layoutX="14.0" layoutY="68.0" onMouseClicked="#matriculaSeleccionada" prefHeight="307.0" prefWidth="116.0" />
-      <VBox layoutX="154.0" layoutY="38.0" prefHeight="150.0" prefWidth="225.0">
+      <ListView fx:id="listViewMatriculas" layoutX="14.0" layoutY="68.0" onMouseClicked="#mostrarDatosVehiculo" prefHeight="307.0" prefWidth="116.0" />
+      <Pane layoutX="141.0" layoutY="22.0" prefHeight="165.0" prefWidth="255.0">
          <children>
-            <HBox prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+            <VBox alignment="TOP_RIGHT" layoutX="8.0" layoutY="3.0" prefHeight="149.0" prefWidth="63.0" spacing="20.0">
                <children>
                   <Label alignment="TOP_RIGHT" contentDisplay="TOP" text="Matrícula">
                      <font>
                         <Font size="13.0" />
                      </font>
-                     <HBox.margin>
-                        <Insets top="5.0" />
-                     </HBox.margin>
                   </Label>
-                  <TextField fx:id="textFieldMatricula" />
-               </children>
-            </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0" spacing="20.0">
-               <children>
                   <Label alignment="TOP_RIGHT" contentDisplay="TOP" text="Marca">
                      <font>
                         <Font size="13.0" />
                      </font>
-                     <HBox.margin>
-                        <Insets top="5.0" />
-                     </HBox.margin>
                   </Label>
-                  <TextField fx:id="textFieldMarca" />
-               </children>
-            </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0" spacing="20.0">
-               <children>
                   <Label alignment="TOP_RIGHT" contentDisplay="TOP" text="Modelo">
                      <font>
                         <Font size="13.0" />
                      </font>
-                     <HBox.margin>
-                        <Insets top="5.0" />
-                     </HBox.margin>
                   </Label>
-                  <TextField fx:id="textFieldModelo" />
-               </children>
-            </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0" spacing="20.0">
-               <children>
                   <Label alignment="TOP_RIGHT" contentDisplay="TOP" text="Cilindrada">
                      <font>
                         <Font size="13.0" />
                      </font>
-                     <HBox.margin>
-                        <Insets top="5.0" />
-                     </HBox.margin>
                   </Label>
-                  <TextField fx:id="textFieldCilindrada" />
+               </children>
+            </VBox>
+            <VBox layoutX="81.0" prefHeight="155.0" prefWidth="170.0" spacing="13.0">
+               <children>
+                  <TextField fx:id="textFieldMatricula" editable="false" />
+                  <TextField fx:id="textFieldMarca" editable="false" />
+                  <TextField fx:id="textFieldModelo" editable="false" />
+                  <TextField fx:id="textFieldCilindrada" editable="false" />
+               </children>
+            </VBox>
+         </children>
+      </Pane>
+      <Pane layoutX="154.0" layoutY="191.0" prefHeight="223.0" prefWidth="611.0">
+         <children>
+            <HBox layoutX="8.0" layoutY="2.0" prefHeight="25.0" prefWidth="596.0" spacing="150.0">
+               <children>
+                  <RadioButton fx:id="radDeport" disable="true" mnemonicParsing="false" text="Deportivo" />
+                  <RadioButton fx:id="radFami" disable="true" mnemonicParsing="false" text="Familiar" />
+                  <RadioButton fx:id="radFurgo" disable="true" mnemonicParsing="false" text="Furgoneta">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </RadioButton>
                </children>
             </HBox>
+            <VBox layoutY="28.0" prefHeight="134.0" prefWidth="185.0" spacing="5.0">
+               <children>
+                  <HBox prefHeight="40.0" prefWidth="197.0" spacing="15.0">
+                     <children>
+                        <Label fx:id="lblCombustible" alignment="CENTER" disable="true" prefHeight="21.0" prefWidth="72.0" text="Combustible:">
+                           <padding>
+                              <Insets top="4.0" />
+                           </padding>
+                        </Label>
+                        <TextField fx:id="txtFldCombustible" editable="false" prefHeight="25.0" prefWidth="75.0" />
+                     </children>
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding>
+                  </HBox>
+                  <HBox prefHeight="35.0" prefWidth="200.0" spacing="15.0">
+                     <children>
+                        <Label fx:id="lblNumPuertas" alignment="CENTER" disable="true" text="Núm puertas:">
+                           <padding>
+                              <Insets top="4.0" />
+                           </padding>
+                        </Label>
+                        <TextField fx:id="txtFldNumPuertas" prefHeight="25.0" prefWidth="35.0" />
+                     </children>
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding>
+                  </HBox>
+                  <CheckBox fx:id="chkDescapotable" disable="true" mnemonicParsing="false" text="Descapotable">
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </CheckBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+                     <children>
+                        <RadioButton fx:id="radManual" disable="true" mnemonicParsing="false" prefHeight="17.0" prefWidth="85.0" text="Manual" />
+                        <RadioButton fx:id="radAutomat" disable="true" mnemonicParsing="false" prefHeight="17.0" prefWidth="86.0" text="Automático" />
+                     </children>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox layoutX="217.0" layoutY="24.0" prefHeight="142.0" prefWidth="176.0" spacing="5.0">
+               <children>
+                  <HBox prefHeight="40.0" prefWidth="197.0" spacing="15.0">
+                     <children>
+                        <Label fx:id="lblCombustible1" alignment="CENTER" disable="true" prefHeight="21.0" prefWidth="70.0" text="Combustible:">
+                           <padding>
+                              <Insets top="4.0" />
+                           </padding>
+                        </Label>
+                        <TextField fx:id="txtFldCombustible1" editable="false" prefHeight="25.0" prefWidth="75.0" />
+                     </children>
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding>
+                  </HBox>
+                  <HBox prefHeight="35.0" prefWidth="200.0" spacing="15.0">
+                     <children>
+                        <Label fx:id="lblNumPuertas1" alignment="CENTER" disable="true" text="Núm puertas:">
+                           <padding>
+                              <Insets top="4.0" />
+                           </padding>
+                        </Label>
+                        <TextField fx:id="txtFldNumPuertas1" prefHeight="25.0" prefWidth="35.0" />
+                     </children>
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding>
+                  </HBox>
+                  <CheckBox fx:id="chkSillaBebe" disable="true" mnemonicParsing="false" text="Silla de bebe">
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </CheckBox>
+                  <HBox prefHeight="35.0" prefWidth="200.0" spacing="20.0">
+                     <children>
+                        <Label fx:id="lblNumPlazas" alignment="CENTER" disable="true" text="Núm plazas:">
+                           <padding>
+                              <Insets top="4.0" />
+                           </padding>
+                        </Label>
+                        <TextField fx:id="txtFldNumPlazas" prefHeight="25.0" prefWidth="35.0" />
+                     </children>
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox layoutX="430.0" layoutY="28.0" prefHeight="142.0" prefWidth="163.0" spacing="5.0">
+               <children>
+                  <HBox prefHeight="40.0" prefWidth="197.0" spacing="37.0">
+                     <children>
+                        <Label fx:id="lblPMA" alignment="CENTER" disable="true" prefHeight="21.0" prefWidth="28.0" text="PMA:">
+                           <padding>
+                              <Insets top="4.0" />
+                           </padding>
+                        </Label>
+                        <TextField fx:id="txtFldCombustible11" editable="false" prefHeight="25.0" prefWidth="83.0" />
+                     </children>
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding>
+                  </HBox>
+                  <HBox prefHeight="35.0" prefWidth="200.0" spacing="15.0">
+                     <children>
+                        <Label fx:id="lblVolumen" alignment="CENTER" disable="true" text="Volumen:">
+                           <padding>
+                              <Insets top="4.0" />
+                           </padding>
+                        </Label>
+                        <TextField fx:id="txtFldNumPuertas11" prefHeight="25.0" prefWidth="35.0" />
+                     </children>
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding>
+                  </HBox>
+                  <CheckBox fx:id="chkRefrigerado" disable="true" mnemonicParsing="false" text="Refrigerado">
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </CheckBox>
+                  <HBox prefHeight="35.0" prefWidth="200.0" spacing="23.0">
+                     <children>
+                        <Label fx:id="lblNumPlazas1" alignment="CENTER" disable="true" text="Tamaño:">
+                           <padding>
+                              <Insets top="4.0" />
+                           </padding>
+                        </Label>
+                        <TextField fx:id="txtFldNumPlazas1" prefHeight="25.0" prefWidth="83.0" />
+                     </children>
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding>
+                  </HBox>
+               </children>
+            </VBox>
+            <Separator layoutX="190.0" layoutY="2.0" orientation="VERTICAL" prefHeight="180.0" prefWidth="6.0" />
+            <Separator layoutX="402.0" layoutY="2.0" orientation="VERTICAL" prefHeight="180.0" />
+            <Button layoutX="215.0" layoutY="189.0" mnemonicParsing="false" onAction="#volver" prefHeight="25.0" prefWidth="163.0" text="Volver a menu principal" />
          </children>
-      </VBox>
+      </Pane>
    </children>
 </AnchorPane>

@@ -48,7 +48,7 @@
                     <items>
                       <MenuItem mnemonicParsing="false" onAction="#anadirAlquiler" text="Nuevo alquiler" />
                         <MenuItem mnemonicParsing="false" onAction="#ceerrarAlquiler" text="Cerrar alquiler" />
-                        <MenuItem mnemonicParsing="false" onAction="#listarAlquileres" text="Listar alquileres" />
+                        <MenuItem mnemonicParsing="false" onAction="#mostrarAlquileres" text="Listar alquileres" />
                     </items>
                   </Menu>
             </items>

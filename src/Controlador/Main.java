@@ -710,6 +710,8 @@ public class Main {
         String alquileresTxt = leerArchivo(rutaAlquileres);
 
         if (!alquileresTxt.isEmpty()) {
+            
+            System.out.println("Entro en aquileres");
 
             String[] datosAlquileres = alquileresTxt.split("\n");
 
@@ -718,17 +720,18 @@ public class Main {
                 String[] datos = datosAlquileres[i].split("#");
 
                 String dni = datos[0];
+                System.out.println(datos[0]);
                 String matricula = datos[1];
                 String fecha = datos[2];
                 int dias = Integer.parseInt(datos[3]);
 
-                if (buscarCliente(dni) != -1) {
+                
 
-                    Cliente nuevoCliente = clientes.get(buscarCliente(dni));
+                    Cliente nuevoCliente = getCliente(dni);
 
-                    if (buscarVehiculo(matricula) != -1) {
+                    
 
-                        Vehiculo nuevoVehiculo = vehiculos.get(buscarVehiculo(matricula));
+                        Vehiculo nuevoVehiculo = getVehiculo(matricula);
 
                         String[] datosFecha = fecha.split("[/ :]+");
 
@@ -745,9 +748,13 @@ public class Main {
                         nuevoAlquiler.setDias(dias);
 
                         alquileres.add(nuevoAlquiler);
+                        
+                        if(alquileres !=null){
+                            System.out.println("Alquiler agregado correctamente");
+                        }
 
-                    }
-                }
+                    
+                
             }
 
         }
